@@ -3,7 +3,7 @@ package com.onclick.moduloA;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.onclick.moduloA")
 public class PercubateristasOnlineApplication {
 
 	public static void main(String[] args) {

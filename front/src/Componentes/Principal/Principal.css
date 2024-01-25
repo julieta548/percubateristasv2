@@ -1,0 +1,14 @@
+.principal {
+    display: flex;
+    flex-direction: row !important;
+
+}
+
+.principal h1 {
+    margin: 10px;
+}
+
+.home {
+    width: 85rem;
+    margin-top: 0;
+}
