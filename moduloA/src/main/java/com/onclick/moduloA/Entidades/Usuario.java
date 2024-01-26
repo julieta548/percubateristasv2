@@ -3,18 +3,17 @@ package com.onclick.moduloA.Entidades;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-
 
 @Entity
 public class Usuario {
@@ -22,14 +21,15 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
     private Long id;
+
     private String nombre;
     private String apellido;
     private String ocupacion;
     private String correo;
     private String contrasenia;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario")
-    , inverseJoinColumns = @JoinColumn(name = "rol_id", referencedColumnName = "id_rol"))
+    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "rol_id", referencedColumnName = "id_rol"))
     private List<Rol> roles = new ArrayList<>();
 
     public Long getId() {
@@ -80,5 +80,11 @@ public class Usuario {
         this.correo = correo;
     }
 
+    public List<Rol> getRoles() {
+        return roles;
+    }
 
+    public void setRoles(List<Rol> roles) {
+        this.roles = roles;
+    }
 }

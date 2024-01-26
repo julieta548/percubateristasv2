@@ -1,9 +1,13 @@
 package com.onclick.moduloA.Entidades;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.Column;
 
@@ -14,20 +18,16 @@ public class Rol {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_rol")
     private Long id;
-
     private String nombre;
-
-    // Constructores, getters y setters
+    @ManyToMany(mappedBy = "roles")
+    private List<Usuario> usuarios = new ArrayList<>();
 
     public Rol() {
-        // Constructor vacío necesario para JPA
     }
 
     public Rol(String nombre) {
         this.nombre = nombre;
     }
-
-    // Getters y setters...
 
     public Long getId() {
         return id;
